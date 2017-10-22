@@ -50,6 +50,9 @@ Shader "Custom/NewOcclusionOutline" {
                
                 fixed4 frag (v2f i) : COLOR
                 {
+				if(i.uv.x < 0.2) {
+				return fixed4(1,0.55,0,1);
+				}
 					half4 rndseed = tex2D(_MainTex,i.uv);
                     half Rim = saturate(dot(normalize(i.viewDir),  i.normal));       //Calculates where the model view falloff is       
                     
